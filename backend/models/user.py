@@ -8,7 +8,7 @@ class Roletype(enum.Enum):
     customer = "customer"
 
 class Users(db.Model):
-    __tablename__ = 'Users'
+    __tablename__ = 'users'
     
     id = db.Column(db.Integer, primary_key = True)
     name = db.Column(db.String , nullable = False , unique = True)
@@ -16,3 +16,5 @@ class Users(db.Model):
     role = db.Column(Enum(Roletype), nullable = False)
     password_hash = db.Column(db.Text , nullable = False)
     created_at = db.Column(db.DateTime , default=datetime.utcnow)
+    
+    orders = db.relationship('Order' , back_populates = 'user' , cascade = "all, delete")

@@ -1,4 +1,4 @@
-from models.db import db
+from backend.models.db import db
 from datetime import datetime
 from sqlalchemy import Enum
 import enum
@@ -7,7 +7,7 @@ class Roletype(enum.Enum):
     admin = "admin"
     customer = "customer"
 
-class Users(db.Model):
+class User(db.Model):
     __tablename__ = 'users'
     
     id = db.Column(db.Integer, primary_key = True)

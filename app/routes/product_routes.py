@@ -24,7 +24,7 @@ def get_product(product_id):
 @product_bp.post('/')
 @token_required
 @admin_required
-def create():
+def create(current_user):  
     data = request.get_json()
     product = create_product(data)
     return product_schema.dump(product), 201
@@ -32,7 +32,7 @@ def create():
 @product_bp.put('/<int:product_id>')
 @token_required
 @admin_required
-def update(product_id):
+def update(current_user, product_id):  
     product = get_product_by_id(product_id)
     if not product:
         return {"message": "Product not found"}, 404
@@ -43,7 +43,7 @@ def update(product_id):
 @product_bp.delete('/<int:product_id>')
 @token_required
 @admin_required
-def delete(product_id):
+def delete(current_user, product_id):  
     product = get_product_by_id(product_id)
     if not product:
         return {"message": "Product not found"}, 404

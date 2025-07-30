@@ -22,13 +22,13 @@ def get_product(product_id):
     return product_schema.dump(product)
 
 @product_bp.post('/')
-@admin_required   #  Swap order: token_required must come last
-@token_required
+@token_required     #  token_required must come first
+@admin_required     # admin_required comes after
 def create(current_user):
     try:
         data = request.get_json()
 
-        # Validate with Marshmallow
+        # Optional: validate data using schema
         errors = product_schema.validate(data)
         if errors:
             return {"errors": errors}, 400
@@ -41,8 +41,8 @@ def create(current_user):
         return {"message": "Internal server error", "error": str(e)}, 500
 
 @product_bp.put('/<int:product_id>')
-@admin_required
 @token_required
+@admin_required
 def update(current_user, product_id):
     product = get_product_by_id(product_id)
     if not product:
@@ -52,8 +52,8 @@ def update(current_user, product_id):
     return product_schema.dump(updated)
 
 @product_bp.delete('/<int:product_id>')
-@admin_required
 @token_required
+@admin_required
 def delete(current_user, product_id):
     product = get_product_by_id(product_id)
     if not product:

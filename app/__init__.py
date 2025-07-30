@@ -21,7 +21,7 @@ def create_app():
     bcrypt.init_app(app)
     CORS(app)
 
-    # Import models to register with SQLAlchemy
+    # Import models
     from app.models import user, product, order, invoice
 
     # Register Blueprints
@@ -30,11 +30,13 @@ def create_app():
     from app.routes.order_routes import order_bp
     from app.routes.user_routes import user_bp
     from app.routes.analytics_routes import analytics_bp
+    from app.routes.index_routes import index_bp  # 🔥 NEW
 
     app.register_blueprint(auth_bp, url_prefix='/api/auth')
     app.register_blueprint(product_bp, url_prefix='/api/products')
     app.register_blueprint(order_bp, url_prefix='/api/orders')
     app.register_blueprint(user_bp, url_prefix='/api/users')
     app.register_blueprint(analytics_bp, url_prefix='/api/analytics')
+    app.register_blueprint(index_bp)  # 🔥 NEW
 
     return app

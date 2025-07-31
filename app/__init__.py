@@ -30,18 +30,13 @@ def create_app():
     from app.routes.order_routes import order_bp
     from app.routes.user_routes import user_bp
     from app.routes.analytics_routes import analytics_bp
-    from app.routes.index_routes import index_bp  # 🔥 NEW
+    from app.routes.index_routes import index_bp  # optional landing route
 
     app.register_blueprint(auth_bp, url_prefix='/api/auth')
     app.register_blueprint(product_bp, url_prefix='/api/products')
     app.register_blueprint(order_bp, url_prefix='/api/orders')
     app.register_blueprint(user_bp, url_prefix='/api/users')
     app.register_blueprint(analytics_bp, url_prefix='/api/analytics')
-    app.register_blueprint(index_bp)  # 🔥 NEW
+    app.register_blueprint(index_bp)
 
-from .user_routes import user_routes
-
-def register_routes(app):
-    app.register_blueprint(user_routes, url_prefix='/api/users')
-
-    return app
+    return app  

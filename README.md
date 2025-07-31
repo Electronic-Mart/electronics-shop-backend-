@@ -28,17 +28,14 @@ This is the **Flask-based backend** for the Electronics Shop project — a full-
 - View product details
 - Admin: create, update, delete products
 
-### 🛒 Orders
-- Authenticated users can place orders
-- Orders include multiple items, address, billing info
-- Internal invoice simulation (no real payment)
-
 ### Admin Analytics
 - View total orders and revenue
 - View top-selling products
 - Manage users and assign roles
 
 ---
+### Live Demo
+ https://electronics-shop-frontend.onrender.com/
 
 ## Admin Credentials
 

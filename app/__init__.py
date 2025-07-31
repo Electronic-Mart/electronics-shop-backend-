@@ -39,4 +39,9 @@ def create_app():
     app.register_blueprint(analytics_bp, url_prefix='/api/analytics')
     app.register_blueprint(index_bp)  # 🔥 NEW
 
+from .user_routes import user_routes
+
+def register_routes(app):
+    app.register_blueprint(user_routes, url_prefix='/api/users')
+
     return app

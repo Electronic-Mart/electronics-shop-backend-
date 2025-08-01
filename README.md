@@ -37,6 +37,13 @@ This is the **Flask-based backend** for the Electronics Shop project — a full-
 ### Live Demo
  https://electronics-shop-frontend.onrender.com/
 
+### Front-end repi link
+ https://github.com/Electronic-Mart/electronics-shop-frontend
+
+### Back-end deployed link
+ https://electronics-shop-backend.onrender.com
+
+---
 ## Admin Credentials
 
 ```env
